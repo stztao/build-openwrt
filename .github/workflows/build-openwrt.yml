@@ -246,6 +246,7 @@ jobs:
         find -name "*manifest*" | xargs -i rm -rf {}
         find -name "*vmlinuz*" | xargs -i rm -rf {}
         find -name "*Image*" | xargs -i rm -rf {}
+        find -name "*vmdk*" | xargs -i rm -rf {}
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "BOT=TRUE" >> $GITHUB_ENV
