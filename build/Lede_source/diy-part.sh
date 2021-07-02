@@ -5,15 +5,15 @@
 #
 
 sed -i "/uci commit fstab/a\uci commit network" $ZZZ
-sed -i "/uci commit network/i\uci set network.lan.ipaddr='192.168.2.2'" $ZZZ                       # IPv4 地址(openwrt后台地址)
+sed -i "/uci commit network/i\uci set network.lan.ipaddr='192.168.1.1'" $ZZZ                       # IPv4 地址(openwrt后台地址)
 sed -i "/uci commit network/i\uci set network.lan.netmask='255.255.255.0'" $ZZZ                    # IPv4 子网掩码
-sed -i "/uci commit network/i\uci set network.lan.gateway='192.168.2.1'" $ZZZ                      # IPv4 网关
-sed -i "/uci commit network/i\uci set network.lan.broadcast='192.168.2.255'" $ZZZ                  # IPv4 广播
-sed -i "/uci commit network/i\uci set network.lan.dns='192.168.2.1'" $ZZZ                          # DNS(多个DNS要用空格分开)
+sed -i "/uci commit network/i\uci set network.lan.gateway='192.168.1.2'" $ZZZ                      # IPv4 网关
+sed -i "/uci commit network/i\uci set network.lan.broadcast='192.168.1.255'" $ZZZ                  # IPv4 广播
+sed -i "/uci commit network/i\uci set network.lan.dns='192.168.1.2'" $ZZZ                          # DNS(多个DNS要用空格分开)
 sed -i "/uci commit network/i\uci set network.lan.delegate='0'" $ZZZ                               # 去掉LAN口使用内置的 IPv6 管理
 echo "close_dhcp" > package/base-files/files/etc/closedhcp                                         # 关闭DHCP服务
 
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile            # 选择argon为默认主题
+#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile            # 选择argon为默认主题
 
 sed -i "s/OpenWrt /${Author} Compiled in $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" $ZZZ           # 增加个性名字281677160
 
